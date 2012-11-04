@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Stubby</title>
+      <link rel="stylesheet" type="text/css" href="css/styles.css">
+   </head>
+   <body>
+      <header>
+      <hgroup>
+      <h1>Stubby</h1>
+      <h2>External System Mocking Made Easy!</h2>
+      </hgroup>
+      </header>
+      <section id="introduction">
+      <p>What is it? Good question! Here's an impromptu tagline:</p>
+      <blockquote>stubby is a small web server used during development for stubbing or mocking resources external to your system.</blockquote>
+      <p>Wow, that sounds super-generic and unexciting. Why would I use this? Another good question! As developers, we often find ourselves reliant on web services that are out of our control.</p>
+
+      <p>An example of this would be writing an app using Twitter's API. You want your <strong>super-mobile-startup-cloud-social-buzzword-buzzword</strong> app to be rock-solid in the event that Twitter goes down, no long has a specific tweet, or fails to find a now-inactive user profile. What you'd like is a fake Twitter with canned responses with which to formulate test cases.</p>
+
+      <p>Enter stubby.</p>
+
+      <p>Here would be a configuration file (let's call it data.yaml) to describe a couple of interactions:</p>
+      <h4 class="filename">data.yaml</h4>
+<pre>
+-  request:
+      url: /api/users/nolongerhere
+      method: GET
+   response:
+      status: 410
+      headers:
+         content-type: application/json
+      body: '{"error":"User nolongerhere no longer exists."}'
+
+-  request:
+      url: /api/tweets/
+      method: POST
+   response:
+      status: 201
+      headers:
+         location: /api/tweets/4abdf897adcee820cd
+</pre>
+      <p>We have a data file! ... what do we <em>do </em>with it? Assuming you have stubby installed (which you should!) you could do this:</p>
+
+      <h4 class="filename">shell</h4>
+<pre>
+<span class="green">$</span> stubby --data data.yaml
+<span class="magenta">Loaded: GET /api/users/nolongerhere</span>
+<span class="magenta">Loaded: POST /api/tweets/</span>
+
+<span class="cyan">Quit: ctrl-c</span>
+
+<span class="dark">Stub portal running at http://localhost:8882
+Admin portal running at http://localhost:8889</span>
+</pre>
+
+
+      <p>Ok, what just happened? It's spitting girly colors out at me.</p>
+      <p>It sure is! Any command-line url utility (wget, curl -- looking at you)  can test it out. I'm going to be demonstrating with <a href="https://github.com/jkbr/httpie" target="_blank">httpie</a>, due to it's human-readable usage. Notice that we submit requests to the url described as "Stub portal" when we exectued stubby:</p>
+
+      <h4 class="filename">shell</h4>
+<pre><span class="green">$</span> http GET localhost:8882/api/users/nolongerhere
+<span class="blue">HTTP</span>/<span class="cyan">1.1 410</span> <span class="orange">Gone</span>
+<span class="dark">Connection:</span> <span class="cyan">keep-alive</span>
+<span class="dark">Date:</span> <span class="cyan">Tue, 09 Oct 2012 07:00:10 GMT</span>
+<span class="dark">Transfer-Encoding:</span> <span class="cyan">chunked</span>
+<span class="dark">content-type:</span> <span class="cyan">application/json</span>
+
+<span class="dark">{</span>
+<span class="blue">    "error"</span><span class="dark">:</span> <span class="cyan">"User nolongerhere no longer exists."</span>
+<span class="dark">}</span>
+</pre>
+
+      <p>Stubby can't take credit for the colors this time; that is actually httpie. Stubby did, however, responded to us with status code <code>410: Gone</code>, with the content-type header <code>application/json</code> and the supplied body as the response. We've interacted with a live connection of our making, with minimal fuss.</p>
+      <p>What about our other endpoint?</p>
+      <h4 class="filename">shell</h4>
+<pre>
+<span class="green">$</span> http POST localhost:8882/api/tweets/
+<span class="blue">HTTP</span><span class="dark">/</span><span class="cyan">1.1 201</span> <span class="orange">Created</span>
+<span class="dark">Connection:</span> <span class="cyan">keep-alive</span>
+<span class="dark">Date:</span> <span class="cyan">Tue, 09 Oct 2012 07:11:50 GMT</span>
+<span class="dark">Transfer-Encoding:</span> <span class="cyan">chunked</span>
+<span class="dark">location:</span> <span class="cyan">/api/tweets/4abdf897adcee820cd</span>
+</pre>
+
+      <p>Don't worry, it's working, too. It's pretending that we created a new tweet by posting to the (fake) API.</p>
+
+      <p>I imagine that you are thinking of new endpoints to describe in your <code>data.yaml</code> for consumption of your tests. Also, you don't <em>have</em> to use stubby from the command-line. My <a title="Alexander Zagniotov" href="http://initbinder.com/about" target="_blank">friend</a> and I have been writing language-specific implementations of stubby. Currently only Java and node.js versions are available. These implementations allow you to control stubby programmatically through your native test suite (if you happen to be using Coffeescript, node, or Java).</p>
+
+      <p>You should check them out!</p>
+      </section>
+      <section id="languages">
+      <h3 id="title">Select a Language</h3>
+      <ul id="selections" class="clearfix"><!--
+         --><li><a href="4j" title="Java"><img src="images/java.png" alt="Java"></a></li><!--
+         --><li><a href="4node" title="node.js"><img src="images/node.js.png" alt="node.js"></a></li>
+      </ul>
+      </section>
+      <footer></footer>
+   </body>
+</html>
