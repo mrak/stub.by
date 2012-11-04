@@ -1,0 +1,3 @@
+[submodule "public/4node"]
+	path = public/4node
+	url = http://github.com/Afmrak/stubby4node.git
