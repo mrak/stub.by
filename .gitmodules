@@ -1,0 +1,6 @@
+[submodule "public/4node"]
+	path = public/4node
+	url = http://github.com/mrak/stubby4node.git
+[submodule "public/4j"]
+	path = public/4j
+	url = http://github.com/azagniotov/stubby4j.git
