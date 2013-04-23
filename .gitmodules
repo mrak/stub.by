@@ -4,3 +4,6 @@
 [submodule "public/4j"]
 	path = public/4j
 	url = http://github.com/azagniotov/stubby4j.git
+[submodule "public/4net"]
+	path = public/4net
+	url = http://github.com/mrak/stubby4net.git
