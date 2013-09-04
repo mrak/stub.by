@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteBase /
+RewriteRule ^4node(.*)$ https://github.com/mrak/stubby4node$1 [R=301,L]
+RewriteRule ^4net(.*)$ https://github.com/mrak/stubby4net$1 [R=301,L]
+RewriteRule ^4j(.*)$ https://github.com/azagniotov/stubby4j$1 [R=301,L]
