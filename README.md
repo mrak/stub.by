@@ -17,15 +17,13 @@ __stubby4node__: [![Build Status](https://secure.travis-ci.org/mrak/stubby4node.
 * [Key Features](#key-features)
 * [Why would a developer use stubby](#why-would-a-developer-use-stubby)
 * [Why would a QA use stubby](#why-would-a-qa-use-stubby)
-* [Adding stubby to your project](#adding-stubby-to-your-project)
 * [Command-line Switches](#command-line-switches)
 * [Endpoint Configuration HOWTO](#endpoint-configuration)
    * [Request](#request)
    * [Response](#response)
-   * [Dynamic token replacement in stubbed response](#dynamic-token-replacement-in-stubbed-response)
 * [The Admin Portal](#the-admin-portal)
 * [The Stubs Portal](#the-stubs-portal)
-* [Programmatic API](#programmatic-api)
+* [Programmatic APIs](#programmatic-apis)
 
 ## Key Features
 * Emulates external webservices in a sandbox for your application to consume over HTTP(S)
