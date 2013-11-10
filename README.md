@@ -9,11 +9,6 @@ It is a stub HTTP server after all, hence the "stubby". Also, in Australian slan
 
 ## Table of Contents
 
-__stubby4j__: [![Build Status](https://secure.travis-ci.org/azagniotov/stubby4j.png?branch=master)](http://travis-ci.org/azagniotov/stubby4j)
-
-__stubby4node__: [![Build Status](https://secure.travis-ci.org/mrak/stubby4node.png?branch=master)](http://travis-ci.org/Afmrak/stubby4node)
-[![NPM version](https://badge.fury.io/js/stubby.png)](http://badge.fury.io/js/stubby)
-
 * [Versions Available](#versions-available)
 * [Installation](#installation)
 * [Key Features](#key-features)
