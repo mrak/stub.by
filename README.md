@@ -14,6 +14,8 @@ __stubby4j__: [![Build Status](https://secure.travis-ci.org/azagniotov/stubby4j.
 __stubby4node__: [![Build Status](https://secure.travis-ci.org/mrak/stubby4node.png?branch=master)](http://travis-ci.org/Afmrak/stubby4node)
 [![NPM version](https://badge.fury.io/js/stubby.png)](http://badge.fury.io/js/stubby)
 
+* [Versions Available](#versions-available)
+* [Installation](#installation)
 * [Key Features](#key-features)
 * [Why would a developer use stubby](#why-would-a-developer-use-stubby)
 * [Why would a QA use stubby](#why-would-a-qa-use-stubby)
@@ -24,6 +26,45 @@ __stubby4node__: [![Build Status](https://secure.travis-ci.org/mrak/stubby4node.
 * [The Admin Portal](#the-admin-portal)
 * [The Stubs Portal](#the-stubs-portal)
 * [Programmatic APIs](#programmatic-apis)
+
+## Versions Available
+
+* [Java](http://stub.by/4j)
+* [Nodejs](http://stub.by/4node)
+* [.NET](http://stub.by/4net)
+
+## Installation
+
+### Java
+
+Available on [Maven Central](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22by.stub%22%20AND%20a%3A%22stubby4j%22)
+
+* __Group ID__ by.stub
+* __Artifact ID__ stubby4j
+
+### Node
+
+As a command-line tool
+
+```
+npm install -g stubby
+```
+
+or as a module dependency
+
+```
+npm install stubby
+```
+
+### .NET
+
+As a command-line: [.NET Downloads](http://stub.by/downloads/4net)
+
+or as a project reference via NuGet
+
+```
+PM> Install-Package stubby
+```
 
 ## Key Features
 * Emulates external webservices in a sandbox for your application to consume over HTTP(S)
